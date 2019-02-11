@@ -1,4 +1,23 @@
 package com.hw2.request;
 
-public class FollowProd {
+import com.hw2.common.Product;
+import com.hw2.message;
+
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Map;
+
+public class FollowProd extends message {
+    private short msgType;
+    Product prod;
+    RegisterUser user;
+    @Override
+    public Map decode(ByteBuffer bytes) {
+        return null;
+    }
+
+    @Override
+    public ByteBuffer encode() throws IOException {
+        return null;
+    }
 }

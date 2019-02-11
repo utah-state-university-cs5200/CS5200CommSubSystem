@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
 import java.util.Map;
 
 public class PostFeed extends message {
+    private short msgType;
     Product prod;
     RegisterUser user;
     String feed;

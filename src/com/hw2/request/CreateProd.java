@@ -8,6 +8,7 @@ import java.nio.ByteBuffer;
 import java.util.Map;
 
 public class CreateProd extends message {
+    private short msgType;
     RegisterUser user;
     Product prod;
 
