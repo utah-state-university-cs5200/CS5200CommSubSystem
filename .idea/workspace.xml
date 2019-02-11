@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="950aeec5-565c-494e-84f1-2260c0d39128" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hw2/request/CreateProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/request/CreateProd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hw2/request/FollowProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/request/FollowProd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hw2/request/PostFeed.java" afterPath="$PROJECT_DIR$/src/com/hw2/request/PostFeed.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hw2/request/RateProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/request/RateProd.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hw2/response/ProductFromInterest.java" afterPath="$PROJECT_DIR$/src/com/hw2/response/ProductFromInterest.java" />
-    </list>
+    <list default="true" id="950aeec5-565c-494e-84f1-2260c0d39128" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
