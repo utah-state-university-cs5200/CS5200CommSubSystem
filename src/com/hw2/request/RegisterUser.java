@@ -1,7 +1,6 @@
 package com.hw2.request;
 
 import com.hw2.message;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;

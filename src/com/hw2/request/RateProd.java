@@ -11,7 +11,7 @@ public class RateProd extends message {
     private short msgType;
     Product prod;
     RegisterUser user;
-    int rating;
+    Float rating;
 
     @Override
     public Map decode(ByteBuffer bytes) {
