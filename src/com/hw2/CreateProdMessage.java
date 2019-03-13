@@ -9,17 +9,13 @@ public class CreateProdMessage extends message{
     private String prodId;
     private short price;
 
-    public CreateProdMessage(short userid, String name, String prodId, short price){
-        this.userId=userid;
+    public CreateProdMessage(short userId, String name, String prodId, short price){
+        this.userId=userId;
         this.name=name;
         this.prodId=prodId;
         this.price=price;
 
     }
-
-
-
-
 
     public static message decode(byte[] messageBytes) {
         Decoder decoder = new Decoder(messageBytes);
