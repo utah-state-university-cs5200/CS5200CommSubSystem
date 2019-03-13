@@ -7,6 +7,7 @@ public class RateProdMessage extends message{
     private String prodId;
     private Short rating;
 
+
     public RateProdMessage(String prodId, Short rating){
         this.prodId=prodId;
         this.rating=rating;
