@@ -24,7 +24,7 @@ public class CreateProdMessage extends message{
     public static message decode(byte[] messageBytes) {
         Decoder decoder = new Decoder(messageBytes);
 
-        if (decoder.decodeMessageType() != MessageType.RegisterUser) {
+        if (decoder.decodeMessageType() != MessageType.CreateProd) {
             throw new IllegalArgumentException();
         }
 
