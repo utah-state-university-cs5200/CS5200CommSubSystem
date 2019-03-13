@@ -29,21 +29,21 @@ public abstract class message {
 
         switch(messageType){
             case RegisterUser:
-                return RegisterUser.decode(messageBytes);
+                return RegisterUserMessage.decode(messageBytes);
             case LoginUser:
-                return LoginUser.decode(messageBytes);
+                return LoginUserMessage.decode(messageBytes);
             case CreateProd:
-                return CreateProd.decode(messageBytes);
+                return CreateProdMessage.decode(messageBytes);
             case FollowProd:
-                return FollowProd.decode(messageBytes);
+                return FollowProdMessage.decode(messageBytes);
             case RateProd:
-                return RateProd.decode(messageBytes);
+                return RateProdMessage.decode(messageBytes);
             case PostFeed:
-                return PostFeed.decode(messageBytes);
+                return PostFeedMessage.decode(messageBytes);
             case RateFeed:
-                return RateFeed.decode(messageBytes);
+                return RateFeedMessage.decode(messageBytes);
             case SearchProd:
-                return SearchProduct.decode(messageBytes);
+                return SearchProductMessage.decode(messageBytes);
             case NotificationMessage:
                 return NotificationMessage.decode(messageBytes);
             case ACKMessage:

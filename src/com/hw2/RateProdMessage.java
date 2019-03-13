@@ -1,9 +1,10 @@
 package com.hw2;
 
-public class FollowProd{
+public class RateProdMessage {
     private short msgType;
-    Product prod;
-    RegisterUser user;
+    ProductMessage prod;
+    RegisterUserMessage user;
+    Float rating;
 
     public static message decode(byte[] messageBytes) {
         return null;

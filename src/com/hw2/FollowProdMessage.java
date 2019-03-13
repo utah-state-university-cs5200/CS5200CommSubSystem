@@ -1,10 +1,9 @@
 package com.hw2;
 
-public class PostFeed {
+public class FollowProdMessage {
     private short msgType;
-    Product prod;
-    RegisterUser user;
-    String feed;
+    ProductMessage prod;
+    RegisterUserMessage user;
 
     public static message decode(byte[] messageBytes) {
         return null;

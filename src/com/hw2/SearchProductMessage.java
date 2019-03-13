@@ -1,6 +1,6 @@
 package com.hw2;
 
-public class SearchProduct{
+public class SearchProductMessage {
     private String query;
     private Short msgType;
     private int userId;

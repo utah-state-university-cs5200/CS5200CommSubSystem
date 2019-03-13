@@ -1,9 +1,9 @@
 package com.hw2;
 
-public class CreateProd{
+public class CreateProdMessage {
     private short msgType;
-    RegisterUser user;
-    Product prod;
+    RegisterUserMessage user;
+    ProductMessage prod;
 
     public static message decode(byte[] messageBytes) {
         return null;

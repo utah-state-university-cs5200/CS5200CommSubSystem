@@ -1,10 +1,10 @@
 package com.hw2;
 
-public class RateProd {
+public class PostFeedMessage {
     private short msgType;
-    Product prod;
-    RegisterUser user;
-    Float rating;
+    ProductMessage prod;
+    RegisterUserMessage user;
+    String feed;
 
     public static message decode(byte[] messageBytes) {
         return null;

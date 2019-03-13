@@ -2,7 +2,7 @@ package com.hw2;
 
 import java.awt.image.BufferedImage;
 
-public class Product {
+public class ProductMessage {
     int prodId;
     String prodName;
     String prodType;

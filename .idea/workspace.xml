@@ -2,24 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="950aeec5-565c-494e-84f1-2260c0d39128" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hw2/ACKMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hw2/LoginUser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hw2/NotificationMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/hw2/RateFeed.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sub/system/communicators/Envelope.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sub/system/communicators/TCPComm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sub/system/communicators/UDPComm.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hw2/common/CommonError.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hw2/response/ProductFromInterest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/hw2/response/UserRegistered.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/common/Product.java" afterPath="$PROJECT_DIR$/src/com/hw2/Product.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/request/CreateProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/CreateProd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/request/FollowProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/FollowProd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/request/PostFeed.java" afterPath="$PROJECT_DIR$/src/com/hw2/PostFeed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/request/RateProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/RateProd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/request/RegisterUser.java" afterPath="$PROJECT_DIR$/src/com/hw2/RegisterUser.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/request/SearchProduct.java" afterPath="$PROJECT_DIR$/src/com/hw2/SearchProduct.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/CreateProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/CreateProdMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/FollowProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/FollowProdMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/LoginUser.java" afterPath="$PROJECT_DIR$/src/com/hw2/LoginUserMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/PostFeed.java" afterPath="$PROJECT_DIR$/src/com/hw2/PostFeedMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/Product.java" afterPath="$PROJECT_DIR$/src/com/hw2/ProductMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/RateFeed.java" afterPath="$PROJECT_DIR$/src/com/hw2/RateFeedMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/RateProd.java" afterPath="$PROJECT_DIR$/src/com/hw2/RateProdMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/RegisterUser.java" afterPath="$PROJECT_DIR$/src/com/hw2/RegisterUserMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/hw2/SearchProduct.java" afterPath="$PROJECT_DIR$/src/com/hw2/SearchProductMessage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hw2/ACKMessage.java" afterPath="$PROJECT_DIR$/src/com/hw2/ACKMessage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/hw2/message.java" afterPath="$PROJECT_DIR$/src/com/hw2/message.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,11 +28,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="message.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="message.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hw2/message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="49" column="37" lean-forward="true" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+            <state relative-caret-position="375">
+              <caret line="27" column="62" lean-forward="true" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#348#349#0" expanded="true" />
+                <element signature="e#385#386#0" expanded="true" />
+                <element signature="e#1796#1797#0" expanded="true" />
+                <element signature="e#1830#1831#0" expanded="true" />
+                <element signature="e#2125#2126#0" expanded="true" />
+                <element signature="e#2173#2174#0" expanded="true" />
+                <element signature="e#4066#4067#0" expanded="true" />
+                <element signature="e#4132#4133#0" expanded="true" />
+                <element signature="e#4419#4420#0" expanded="true" />
+                <element signature="e#4471#4472#0" expanded="true" />
+                <element signature="e#4505#4506#0" expanded="true" />
+                <element signature="e#4555#4556#0" expanded="true" />
+                <element signature="e#4591#4592#0" expanded="true" />
+                <element signature="e#4642#4643#0" expanded="true" />
+                <element signature="e#4678#4679#0" expanded="true" />
+                <element signature="e#4725#4726#0" expanded="true" />
+                <element signature="e#5469#5470#0" expanded="true" />
+                <element signature="e#5490#5512#0" expanded="true" />
+                <element signature="e#5522#5523#0" expanded="true" />
+                <element signature="e#5591#5592#0" expanded="true" />
+                <element signature="e#5651#5652#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UDPComm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/sub/system/communicators/UDPComm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,24 +76,16 @@
       <file leaf-file-name="ACKMessage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hw2/ACKMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+            <state relative-caret-position="315">
+              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
               <folding>
-                <element signature="e#98#99#0" expanded="true" />
-                <element signature="e#125#126#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NotificationMessage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hw2/NotificationMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-              <folding>
-                <element signature="e#107#108#0" expanded="true" />
-                <element signature="e#134#135#0" expanded="true" />
+                <element signature="e#111#112#0" expanded="true" />
+                <element signature="e#156#157#0" expanded="true" />
+                <element signature="e#409#453#1" expanded="true" />
+                <element signature="e#463#583#0" expanded="true" />
+                <element signature="e#463#583#0" expanded="true" />
+                <element signature="e#463#583#0" expanded="true" />
+                <element signature="e#463#583#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,27 +103,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hw2/LoginUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-              <folding>
-                <element signature="e#97#98#0" expanded="true" />
-                <element signature="e#124#125#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchProduct.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hw2/SearchProduct.java">
+      <file leaf-file-name="RegisterUserMessage.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/hw2/RegisterUserMessage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="11" column="112" lean-forward="false" selection-start-line="11" selection-start-column="112" selection-end-line="11" selection-end-column="112" />
               <folding>
-                <element signature="e#178#179#0" expanded="true" />
-                <element signature="e#205#206#0" expanded="true" />
+                <element signature="e#652#696#1" expanded="true" />
+                <element signature="e#706#828#0" expanded="true" />
+                <element signature="e#706#828#0" expanded="true" />
+                <element signature="e#706#828#0" expanded="true" />
+                <element signature="e#706#828#0" expanded="true" />
+                <element signature="e#838#875#1" expanded="true" />
+                <element signature="e#884#921#1" expanded="true" />
+                <element signature="e#930#970#1" expanded="true" />
+                <element signature="e#979#1020#1" expanded="true" />
+                <element signature="e#1029#1076#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/com/sub/system/communicators/Envelope.java" />
         <option value="$PROJECT_DIR$/src/com/sub/system/communicators/UDPComm.java" />
         <option value="$PROJECT_DIR$/src/com/hw2/Product.java" />
-        <option value="$PROJECT_DIR$/src/com/hw2/RegisterUser.java" />
         <option value="$PROJECT_DIR$/src/com/hw2/FollowProd.java" />
         <option value="$PROJECT_DIR$/src/com/hw2/CreateProd.java" />
         <option value="$PROJECT_DIR$/src/com/hw2/PostFeed.java" />
@@ -163,6 +175,8 @@
         <option value="$PROJECT_DIR$/src/com/hw2/NotificationMessage.java" />
         <option value="$PROJECT_DIR$/src/com/hw2/message.java" />
         <option value="$PROJECT_DIR$/src/com/hw2/ACKMessage.java" />
+        <option value="$PROJECT_DIR$/src/com/hw2/RegisterUser.java" />
+        <option value="$PROJECT_DIR$/src/com/hw2/RegisterUserMessage.java" />
       </list>
     </option>
   </component>
@@ -515,7 +529,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -529,7 +542,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -819,21 +832,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sub/system/communicators/UDPComm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding>
-            <element signature="e#454#471#0" expanded="true" />
-            <element signature="e#858#904#1" expanded="true" />
-            <element signature="e#913#1005#1" expanded="true" />
-            <element signature="e#953#1004#0" expanded="true" />
-            <element signature="e#1015#1086#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/Product.java">
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/ProductMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -841,100 +840,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/RegisterUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-          <folding>
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/FollowProd.java">
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/FollowProdMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
           <folding>
-            <element signature="e#166#167#0" expanded="true" />
-            <element signature="e#193#194#0" expanded="true" />
+            <element signature="e#188#189#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/CreateProd.java">
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/CreateProdMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
           <folding>
-            <element signature="e#166#167#0" expanded="true" />
-            <element signature="e#193#194#0" expanded="true" />
+            <element signature="e#188#189#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/PostFeed.java">
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/PostFeedMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding>
-            <element signature="e#182#183#0" expanded="true" />
-            <element signature="e#209#210#0" expanded="true" />
+            <element signature="e#203#204#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/RateFeed.java">
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/RateFeedMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
           <folding>
-            <element signature="e#96#97#0" expanded="true" />
-            <element signature="e#123#124#0" expanded="true" />
+            <element signature="e#103#104#0" expanded="true" />
+            <element signature="e#130#131#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/RateProd.java">
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/RateProdMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#183#184#0" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/SearchProduct.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#178#179#0" expanded="true" />
-            <element signature="e#205#206#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hw2/LoginUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="e#97#98#0" expanded="true" />
-            <element signature="e#124#125#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sub/system/communicators/Envelope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#204#205#0" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -950,23 +906,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sub/system/communicators/UDPComm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hw2/ACKMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        <state relative-caret-position="315">
+          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
           <folding>
-            <element signature="e#98#99#0" expanded="true" />
-            <element signature="e#125#126#0" expanded="true" />
+            <element signature="e#111#112#0" expanded="true" />
+            <element signature="e#156#157#0" expanded="true" />
+            <element signature="e#409#453#1" expanded="true" />
+            <element signature="e#463#583#0" expanded="true" />
+            <element signature="e#463#583#0" expanded="true" />
+            <element signature="e#463#583#0" expanded="true" />
+            <element signature="e#463#583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/LoginUserMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="e#104#105#0" expanded="true" />
+            <element signature="e#131#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/SearchProductMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#186#187#0" expanded="true" />
+            <element signature="e#213#214#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sub/system/communicators/Envelope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hw2/message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="49" column="37" lean-forward="true" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+        <state relative-caret-position="375">
+          <caret line="27" column="62" lean-forward="true" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1830#1831#0" expanded="true" />
+            <element signature="e#2125#2126#0" expanded="true" />
+            <element signature="e#2173#2174#0" expanded="true" />
+            <element signature="e#4066#4067#0" expanded="true" />
+            <element signature="e#4132#4133#0" expanded="true" />
+            <element signature="e#4419#4420#0" expanded="true" />
+            <element signature="e#4471#4472#0" expanded="true" />
+            <element signature="e#4505#4506#0" expanded="true" />
+            <element signature="e#4555#4556#0" expanded="true" />
+            <element signature="e#4591#4592#0" expanded="true" />
+            <element signature="e#4642#4643#0" expanded="true" />
+            <element signature="e#4678#4679#0" expanded="true" />
+            <element signature="e#4725#4726#0" expanded="true" />
+            <element signature="e#5469#5470#0" expanded="true" />
+            <element signature="e#5490#5512#0" expanded="true" />
+            <element signature="e#5522#5523#0" expanded="true" />
+            <element signature="e#5591#5592#0" expanded="true" />
+            <element signature="e#5651#5652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hw2/RegisterUserMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="112" lean-forward="false" selection-start-line="11" selection-start-column="112" selection-end-line="11" selection-end-column="112" />
+          <folding>
+            <element signature="e#652#696#1" expanded="true" />
+            <element signature="e#706#828#0" expanded="true" />
+            <element signature="e#706#828#0" expanded="true" />
+            <element signature="e#706#828#0" expanded="true" />
+            <element signature="e#706#828#0" expanded="true" />
+            <element signature="e#838#875#1" expanded="true" />
+            <element signature="e#884#921#1" expanded="true" />
+            <element signature="e#930#970#1" expanded="true" />
+            <element signature="e#979#1020#1" expanded="true" />
+            <element signature="e#1029#1076#1" expanded="true" />
           </folding>
         </state>
       </provider>
