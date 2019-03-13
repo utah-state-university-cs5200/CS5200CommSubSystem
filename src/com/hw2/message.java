@@ -112,6 +112,7 @@ public abstract class message {
             return this;
         }
 
+
         public Encoder encodeString(String value) throws IOException {
             if (value==null)
                 value="";
