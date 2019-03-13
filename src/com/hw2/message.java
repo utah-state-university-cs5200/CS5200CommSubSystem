@@ -91,6 +91,15 @@ public abstract class message {
             return this;
         }
 
+
+        public Encoder encodeFloat(float value) throws IOException {
+            ByteBuffer buffer = ByteBuffer.allocate(Float.BYTES);
+            buffer.order(ByteOrder.BIG_ENDIAN);
+            buffer.putFloat(value);
+            byteArrayOutputStream.write(buffer.array());
+            return this;
+        }
+
         public Encoder encodeInt(int value) throws IOException {
             ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES);
             buffer.order(ByteOrder.BIG_ENDIAN);
@@ -143,6 +152,10 @@ public abstract class message {
 
         public short decodeShort() {
             return byteBuffer.getShort();
+        }
+
+        public float decodeFloat() {
+            return byteBuffer.getFloat();
         }
 
         public int decodeInt() {

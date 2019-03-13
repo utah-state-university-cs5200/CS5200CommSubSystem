@@ -5,12 +5,14 @@ import java.io.IOException;
 public class RateProdMessage extends message{
 
     private String prodId;
-    private Short rating;
+    private Float rating;
+    private String review;
+//    review string will be the feedback of item by user
 
-
-    public RateProdMessage(String prodId, Short rating){
+    public RateProdMessage(String prodId, Float rating, String review){
         this.prodId=prodId;
         this.rating=rating;
+        this.review=review;
 
     }
 
@@ -22,16 +24,18 @@ public class RateProdMessage extends message{
         }
 
         String prodId = decoder.decodeString();
-        Short rating = decoder.decodeShort();
+        String review = decoder.decodeString();
+        Float rating = decoder.decodeFloat();
 
-        return new RateProdMessage(prodId, rating);
+        return new RateProdMessage(prodId,rating,review);
     }
 
     @Override
     public byte[] encode() throws IOException {
         return new Encoder()
                 .encodeString(prodId)
-                .encodeShort(rating)
+                .encodeFloat(rating)
+                .encodeString(review)
                 .toByteArray();
     }
 }
