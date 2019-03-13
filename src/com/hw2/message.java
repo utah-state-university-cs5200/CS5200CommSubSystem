@@ -1,48 +1,194 @@
 package com.hw2;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
-import java.util.Map;
+import java.util.Objects;
 
 public abstract class message {
-    public abstract Map decode(ByteBuffer bytes);
-    public abstract ByteBuffer encode() throws IOException;
+    protected MessageType messageType;
 
-    private ByteArrayOutputStream outputStream;
+    protected message() {
 
-    public void encodeShort(short value) throws IOException {
-        ByteBuffer buffer = ByteBuffer.allocate(Short.BYTES);
-        buffer.order(ByteOrder.BIG_ENDIAN);
-        buffer.putShort(value);
-        outputStream.write(buffer.array());
     }
 
-    public void encodeInt(int value) throws IOException {
-        ByteBuffer buffer = ByteBuffer.allocate(Short.BYTES);
-        buffer.order(ByteOrder.BIG_ENDIAN);
-        buffer.putInt(value);
-        outputStream.write(buffer.array());
+    protected message(MessageType msgType) {
+        messageType = msgType;
     }
 
-    public void encodeString(String value) throws IOException {
-        byte[] textBytes = value.getBytes(Charset.forName("UTF-16"));
-        encodeShort((short) textBytes.length);
-        outputStream.write(textBytes);
-    }
-
-    public static short decodeShort(ByteBuffer bytes) {
-        return bytes.getShort();
-    }
-
-    public static String decodeString(ByteBuffer bytes) {
-        short textLength = decodeShort(bytes);
-        if (bytes.remaining() < textLength) {
-            return null;
+    public static message decode(byte[] messageBytes) {
+        if(messageBytes.length < 2) {
+            throw new IllegalArgumentException();
         }
-        byte[] textBytes = new byte[textLength];
-        bytes.get(textBytes, 0, textLength);
-        return new String(textBytes, Charset.forName("UTF-16"));
+
+        Decoder decoder = new Decoder(messageBytes);
+
+        MessageType messageType = decoder.decodeMessageType();
+
+        switch(messageType){
+            case RegisterUser:
+                return RegisterUser.decode(messageBytes);
+            case LoginUser:
+                return LoginUser.decode(messageBytes);
+            case CreateProd:
+                return CreateProd.decode(messageBytes);
+            case FollowProd:
+                return FollowProd.decode(messageBytes);
+            case RateProd:
+                return RateProd.decode(messageBytes);
+            case PostFeed:
+                return PostFeed.decode(messageBytes);
+            case RateFeed:
+                return RateFeed.decode(messageBytes);
+            case SearchProd:
+                return SearchProduct.decode(messageBytes);
+            case NotificationMessage:
+                return NotificationMessage.decode(messageBytes);
+            case ACKMessage:
+                return ACKMessage.decode(messageBytes);
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    public abstract byte[] encode() throws IOException;
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        message message = (message) o;
+        return messageType == message.messageType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(messageType);
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "messageType=" + messageType +
+                '}';
+    }
+
+    protected static class Encoder {
+
+        private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        public Encoder encodeShort(short value) throws IOException {
+            ByteBuffer buffer = ByteBuffer.allocate(Short.BYTES);
+            buffer.order(ByteOrder.BIG_ENDIAN);
+            buffer.putShort(value);
+            byteArrayOutputStream.write(buffer.array());
+            return this;
+        }
+
+        public Encoder encodeInt(int value) throws IOException {
+            ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES);
+            buffer.order(ByteOrder.BIG_ENDIAN);
+            buffer.putInt(value);
+            byteArrayOutputStream.write(buffer.array());
+            return this;
+        }
+
+        public Encoder encodeByte(byte value) throws IOException {
+            byteArrayOutputStream.write(value);
+            return this;
+        }
+
+        public Encoder encodeLong(long value) throws IOException {
+            ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
+            buffer.order(ByteOrder.BIG_ENDIAN);
+            buffer.putLong(value);
+            byteArrayOutputStream.write(buffer.array());
+            return this;
+        }
+
+        public Encoder encodeString(String value) throws IOException {
+            if (value==null)
+                value="";
+
+            byte[] textBytes = value.getBytes(Charset.forName("UTF-16BE"));
+            encodeShort((short) (textBytes.length));
+            byteArrayOutputStream.write(textBytes);
+            return this;
+        }
+
+        public Encoder encodeMessageType(MessageType messageType) throws IOException {
+            return encodeShort(messageType.toShort());
+        }
+
+        public byte[] toByteArray() {
+            return byteArrayOutputStream.toByteArray();
+        }
+    }
+
+    protected static class Decoder {
+
+        private ByteBuffer byteBuffer;
+
+        public Decoder(byte[] messageBytes) {
+            byteBuffer = ByteBuffer.wrap(messageBytes);
+            byteBuffer.order(ByteOrder.BIG_ENDIAN);
+        }
+
+        public short decodeShort() {
+            return byteBuffer.getShort();
+        }
+
+        public int decodeInt() {
+            return byteBuffer.getInt();
+        }
+
+        public long decodeLong() {
+            return byteBuffer.getLong();
+        }
+
+        public byte decodeByte() {
+            return byteBuffer.get();
+        }
+
+        public String decodeString() {
+            short textLength = decodeShort();
+
+            byte[] textBytes = new byte[textLength];
+            byteBuffer.get(textBytes, 0, textLength);
+            return new String(textBytes, Charset.forName("UTF-16BE"));
+        }
+
+        public MessageType decodeMessageType() {
+            short messageTypeShort = decodeShort();
+            return MessageType.getTypeFromShort(messageTypeShort);
+        }
+    }
+
+    public enum MessageType {
+        ERROR,
+        RegisterUser,
+        LoginUser,
+        CreateProd,
+        FollowProd,
+        RateProd,
+        PostFeed,
+        RateFeed,
+        SearchProd,
+        NotificationMessage,
+        ACKMessage;
+
+        public short toShort() {
+            return (short) this.ordinal();
+        }
+
+        public static MessageType getTypeFromShort(short ordinal) {
+            return MessageType.values()[ordinal];
+        }
     }
 }

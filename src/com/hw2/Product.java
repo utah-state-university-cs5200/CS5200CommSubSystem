@@ -1,4 +1,4 @@
-package com.hw2.common;
+package com.hw2;
 
 import java.awt.image.BufferedImage;
 
