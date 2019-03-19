@@ -7,18 +7,18 @@ import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.util.Objects;
 
-public abstract class message {
+public abstract class Message {
     protected MessageType messageType;
 
-    protected message() {
+    protected Message() {
 
     }
 
-    protected message(MessageType msgType) {
+    protected Message(MessageType msgType) {
         messageType = msgType;
     }
 
-    public static message decode(byte[] messageBytes) {
+    public static Message decode(byte[] messageBytes) {
         if(messageBytes.length < 2) {
             throw new IllegalArgumentException();
         }
@@ -63,7 +63,7 @@ public abstract class message {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        message message = (message) o;
+        Message message = (Message) o;
         return messageType == message.messageType;
     }
 
@@ -79,7 +79,7 @@ public abstract class message {
                 '}';
     }
 
-    protected static class Encoder {
+    public static class Encoder {
 
         private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 

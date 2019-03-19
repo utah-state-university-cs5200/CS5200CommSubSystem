@@ -6,7 +6,7 @@ public class PostFeedMessage {
     RegisterUserMessage user;
     String feed;
 
-    public static message decode(byte[] messageBytes) {
+    public static Message decode(byte[] messageBytes) {
         return null;
     }
 }

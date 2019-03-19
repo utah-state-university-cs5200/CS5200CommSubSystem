@@ -2,7 +2,7 @@ package com.hw2;
 
 import java.io.IOException;
 
-public class CreateProdMessage extends message{
+public class CreateProdMessage extends Message{
 
     private short userId;
     private String name;
@@ -17,7 +17,7 @@ public class CreateProdMessage extends message{
 
     }
 
-    public static message decode(byte[] messageBytes) {
+    public static Message decode(byte[] messageBytes) {
         Decoder decoder = new Decoder(messageBytes);
 
         if (decoder.decodeMessageType() != MessageType.CreateProd) {

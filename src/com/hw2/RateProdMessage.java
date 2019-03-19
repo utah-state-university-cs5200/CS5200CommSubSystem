@@ -2,7 +2,7 @@ package com.hw2;
 
 import java.io.IOException;
 
-public class RateProdMessage extends message{
+public class RateProdMessage extends Message{
 
     private String prodId;
     private Float rating;
@@ -16,8 +16,8 @@ public class RateProdMessage extends message{
 
     }
 
-    public static message decode(byte[] messageBytes) {
-        message.Decoder decoder = new message.Decoder(messageBytes);
+    public static Message decode(byte[] messageBytes) {
+        Message.Decoder decoder = new Message.Decoder(messageBytes);
 
         if (decoder.decodeMessageType() != MessageType.RateProd) {
             throw new IllegalArgumentException();

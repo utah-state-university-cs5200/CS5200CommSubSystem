@@ -2,7 +2,7 @@ package com.hw2;
 
 import java.io.IOException;
 
-public class RateFeedMessage extends message{
+public class RateFeedMessage extends Message{
 
     private String prodId;
     private Short vote;
@@ -16,8 +16,8 @@ public class RateFeedMessage extends message{
         this.userId=userId;
     }
 
-    public static message decode(byte[] messageBytes) {
-        message.Decoder decoder = new message.Decoder(messageBytes);
+    public static Message decode(byte[] messageBytes) {
+        Message.Decoder decoder = new Message.Decoder(messageBytes);
 
         if (decoder.decodeMessageType() != MessageType.RateFeed) {
             throw new IllegalArgumentException();

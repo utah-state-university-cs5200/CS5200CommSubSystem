@@ -2,7 +2,7 @@ package com.hw2;
 
 import java.io.IOException;
 
-public class SearchProductMessage extends message {
+public class SearchProductMessage extends Message {
 
     private String prodName;
 
@@ -10,8 +10,8 @@ public class SearchProductMessage extends message {
         this.prodName=prodName;
     }
 
-    public static message decode(byte[] messageBytes) {
-        message.Decoder decoder = new message.Decoder(messageBytes);
+    public static Message decode(byte[] messageBytes) {
+        Message.Decoder decoder = new Message.Decoder(messageBytes);
 
         if (decoder.decodeMessageType() != MessageType.SearchProd) {
             throw new IllegalArgumentException();

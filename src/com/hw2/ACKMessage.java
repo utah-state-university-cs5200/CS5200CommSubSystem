@@ -1,6 +1,6 @@
 package com.hw2;
 import java.io.IOException;
-public class ACKMessage extends message {
+public class ACKMessage extends Message {
     public ACKMessage() {
         super(MessageType.ACKMessage);
     }

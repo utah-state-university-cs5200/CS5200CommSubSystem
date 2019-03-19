@@ -2,7 +2,7 @@ package com.hw2;
 
 import java.io.IOException;
 
-public  class RegisterUserMessage extends message {
+public  class RegisterUserMessage extends Message {
     private short userId;
     private String Name;
     private String emailId;

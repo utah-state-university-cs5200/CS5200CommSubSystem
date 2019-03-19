@@ -2,7 +2,7 @@ package com.hw2;
 
 import java.io.IOException;
 
-public class FollowProdMessage extends message{
+public class FollowProdMessage extends Message{
 
     private String prodId;
 
@@ -10,10 +10,10 @@ public class FollowProdMessage extends message{
         this.prodId=prodId;
     }
 
-    public static message decode(byte[] messageBytes) {
-        message.Decoder decoder = new message.Decoder(messageBytes);
+    public static Message decode(byte[] messageBytes) {
+        Message.Decoder decoder = new Message.Decoder(messageBytes);
 
-        if (decoder.decodeMessageType() != message.MessageType.FollowProd) {
+        if (decoder.decodeMessageType() != Message.MessageType.FollowProd) {
             throw new IllegalArgumentException();
         }
 

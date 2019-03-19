@@ -2,7 +2,7 @@ package com.hw2;
 
 import java.io.IOException;
 
-public class LoginUserMessage extends message{
+public class LoginUserMessage extends Message{
 
     private String email;
     private String password;
@@ -13,8 +13,8 @@ public class LoginUserMessage extends message{
         this.password=password;
     }
 
-    public static message decode(byte[] messageBytes) {
-        message.Decoder decoder = new message.Decoder(messageBytes);
+    public static Message decode(byte[] messageBytes) {
+        Message.Decoder decoder = new Message.Decoder(messageBytes);
 
         if (decoder.decodeMessageType() != MessageType.LoginUser) {
             throw new IllegalArgumentException();
