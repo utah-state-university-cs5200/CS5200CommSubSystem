@@ -7,10 +7,11 @@ public class FollowProdMessage extends Message{
     private String prodId;
 
     public FollowProdMessage(String prodId){
+        super(MessageType.FollowProd);
         this.prodId=prodId;
     }
 
-    public static Message decode(byte[] messageBytes) {
+    public static FollowProdMessage decode(byte[] messageBytes) {
         Message.Decoder decoder = new Message.Decoder(messageBytes);
 
         if (decoder.decodeMessageType() != Message.MessageType.FollowProd) {
@@ -23,9 +24,18 @@ public class FollowProdMessage extends Message{
         return new FollowProdMessage(prodId);
     }
 
+    public String getProdId() {
+        return prodId;
+    }
+
+    public void setProdId(String prodId) {
+        this.prodId = prodId;
+    }
+
     @Override
     public byte[] encode() throws IOException {
         return new Encoder()
+                .encodeMessageType(messageType)
                 .encodeString(prodId)
                 .toByteArray();
     }

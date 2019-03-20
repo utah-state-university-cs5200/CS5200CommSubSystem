@@ -1,6 +1,6 @@
 package com.sub.system.communicators;
 
-import com.hw2.message;
+import com.hw2.Message;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
@@ -28,7 +28,7 @@ public class Envelope<T> {
         return null;
     }
 
-    public boolean isValidToSend(message m, InetSocketAddress isa){
+    public boolean isValidToSend(Message m, InetSocketAddress isa){
         if(m != null &&  isa != null && isa.getAddress().toString() !="0.0.0.0" && isa.getPort()!=0)
             return true;
         else

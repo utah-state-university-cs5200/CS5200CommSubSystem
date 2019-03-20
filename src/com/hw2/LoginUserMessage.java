@@ -9,11 +9,12 @@ public class LoginUserMessage extends Message{
 
 
     public LoginUserMessage(String email, String password){
+        super(MessageType.LoginUser);
         this.email=email;
         this.password=password;
     }
 
-    public static Message decode(byte[] messageBytes) {
+    public static LoginUserMessage decode(byte[] messageBytes) {
         Message.Decoder decoder = new Message.Decoder(messageBytes);
 
         if (decoder.decodeMessageType() != MessageType.LoginUser) {
@@ -26,9 +27,26 @@ public class LoginUserMessage extends Message{
         return new LoginUserMessage(email, password);
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public byte[] encode() throws IOException {
         return new Encoder()
+                .encodeMessageType(messageType)
                 .encodeString(email)
                 .encodeString(password)
                 .toByteArray();

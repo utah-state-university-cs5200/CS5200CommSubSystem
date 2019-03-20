@@ -9,7 +9,40 @@ public class CreateProdMessage extends Message{
     private String prodId;
     private short price;
 
+    public short getUserId() {
+        return userId;
+    }
+
+    public void setUserId(short userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getProdId() {
+        return prodId;
+    }
+
+    public void setProdId(String prodId) {
+        this.prodId = prodId;
+    }
+
+    public short getPrice() {
+        return price;
+    }
+
+    public void setPrice(short price) {
+        this.price = price;
+    }
+
     public CreateProdMessage(short userId, String name, String prodId, short price){
+        super(MessageType.CreateProd);
         this.userId=userId;
         this.name=name;
         this.prodId=prodId;
@@ -17,10 +50,10 @@ public class CreateProdMessage extends Message{
 
     }
 
-    public static Message decode(byte[] messageBytes) {
-        Decoder decoder = new Decoder(messageBytes);
+    public static CreateProdMessage decode(byte[] messageBytes) {
+        Message.Decoder decoder = new Message.Decoder(messageBytes);
 
-        if (decoder.decodeMessageType() != MessageType.CreateProd) {
+        if (decoder.decodeMessageType() != Message.MessageType.CreateProd) {
             throw new IllegalArgumentException();
         }
 
