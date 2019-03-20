@@ -31,11 +31,11 @@ public abstract class Conversation {
         ExecutorService pool = Executors.newFixedThreadPool(3);
     }
 
-    public void Execute(Object context)
-    {
-        if (Initialize())
-            ExecuteDetails(context);
-    }
+//    public void Execute(Object context)
+//    {
+//        if (Initialize())
+//            ExecuteDetails(context);
+//    }
 
     protected boolean Initialize()
     {
@@ -43,7 +43,7 @@ public abstract class Conversation {
         return true;
     }
 
-    protected abstract void ExecuteDetails(Object context);
+//    protected abstract void ExecuteDetails(Object context);
 
     public void Process(Envelope env)
     {

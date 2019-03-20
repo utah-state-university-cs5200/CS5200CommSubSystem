@@ -7,9 +7,9 @@ public class CommSubSystem {
     private Conversation conv;
     private Dispatcher disp;
     private Envelope env;
-    private ConversationDictionary convDict; // Create Getter And Setter
-    public UDPComm UdpComm; // Create Getter And Setter
-    public TCPComm TcpComm; // Create Getter And Setter
+    private ConversationDictionary convDict;
+    public UDPComm UdpComm;
+    public TCPComm TcpComm;
 
     public ConversationDictionary getConvDict() {
         return convDict;
