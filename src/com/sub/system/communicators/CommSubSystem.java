@@ -11,6 +11,30 @@ public class CommSubSystem {
     public UDPComm UdpComm; // Create Getter And Setter
     public TCPComm TcpComm; // Create Getter And Setter
 
+    public ConversationDictionary getConvDict() {
+        return convDict;
+    }
+
+    public void setConvDict(ConversationDictionary convDict) {
+        this.convDict = convDict;
+    }
+
+    public UDPComm getUdpComm() {
+        return UdpComm;
+    }
+
+    public void setUdpComm(UDPComm udpComm) {
+        UdpComm = udpComm;
+    }
+
+    public TCPComm getTcpComm() {
+        return TcpComm;
+    }
+
+    public void setTcpComm(TCPComm tcpComm) {
+        TcpComm = tcpComm;
+    }
+
     private int _minPort;
     private int _maxPort;
 
