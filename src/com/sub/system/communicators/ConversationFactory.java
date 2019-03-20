@@ -5,9 +5,9 @@ import java.util.HashMap;
 public abstract class ConversationFactory {
     private HashMap<String, String> _typeMappings = new HashMap<>();
 
-    public CommSubSystem ManagingSubsystem;
-    public int DefaultMaxRetries;
-    public int DefaultTimeout;
+    public CommSubSystem ManagingSubsystem; // Create Getter And Setter
+    public int DefaultMaxRetries; // Create Getter And Setter
+    public int DefaultTimeout; // Create Getter And Setter
 
     public abstract void Initialize();
 

@@ -3,28 +3,43 @@ import java.net.InetSocketAddress;
 
 public class CommSubSystem {
     private InetSocketAddress bestAddress;
-    private ConversationFactory conversationFactory;
-    private int minPort;
-    private int maxPort;
+    private ConversationFactory convFact;
+    private Conversation conv;
+    private Dispatcher disp;
+    private Envelope env;
+    private ConversationDictionary convDict; // Create Getter And Setter
+    public UDPComm UdpComm; // Create Getter And Setter
+    public TCPComm TcpComm; // Create Getter And Setter
 
-    public int Port = 8080;
+    private int _minPort;
+    private int _maxPort;
+
+    public int port = 8080;
     public String BestLocalEndPoint = "";
-    public ConversationDictionary Conversations;
-    public UDPComm UdpCommunicator;
+
 
     public CommSubSystem(ConversationFactory factory, int minPort, int maxPort)
     {
-        conversationFactory = factory;
-        conversationFactory.ManagingSubsystem = this;
-
-        minPort = minPort;
-        maxPort = maxPort;
-
-        Conversations = new ConversationDictionary();
+        convFact = factory;
+        _minPort = minPort;
+        _maxPort = maxPort;
+        convFact.ManagingSubsystem = this;
+        convDict = new ConversationDictionary();
     }
 
     public void Initialize()
     {
+        convFact.Initialize();
 
+
+    }
+
+    public void Stop(int flag)
+    {
+        if (UdpComm != null)
+        {
+//            UdpComm.Stop();
+            UdpComm = null;
+        }
     }
 }
