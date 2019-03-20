@@ -7,12 +7,13 @@ import java.net.Socket;
 import java.util.Arrays;
 
 public class TCPComm extends Envelope<byte[]>{
+
     private Socket socket;
+
     TCPComm(Socket socket) {
         if(socket == null || !socket.isConnected()) {
             throw new IllegalArgumentException();
         }
-
         this.socket = socket;
     }
 
