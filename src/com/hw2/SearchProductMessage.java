@@ -7,10 +7,11 @@ public class SearchProductMessage extends Message {
     private String prodName;
 
     public SearchProductMessage(String prodName){
+        super(MessageType.SearchProd);
         this.prodName=prodName;
     }
 
-    public static Message decode(byte[] messageBytes) {
+    public static SearchProductMessage decode(byte[] messageBytes) {
         Message.Decoder decoder = new Message.Decoder(messageBytes);
 
         if (decoder.decodeMessageType() != MessageType.SearchProd) {
@@ -22,9 +23,18 @@ public class SearchProductMessage extends Message {
         return new SearchProductMessage(prodName);
     }
 
+    public String getProdName() {
+        return prodName;
+    }
+
+    public void setProdName(String prodName) {
+        this.prodName = prodName;
+    }
+
     @Override
     public byte[] encode() throws IOException {
         return new Encoder()
+                .encodeMessageType(messageType)
                 .encodeString(prodName)
                 .toByteArray();
     }
