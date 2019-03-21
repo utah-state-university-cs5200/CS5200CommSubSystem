@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-public abstract class Conversation {
+public class Conversation {
     Queue<Envelope> IncomingEnvelopes = new ConcurrentLinkedQueue<Envelope>();
     // getter setter PossibleState
     public enum PossibleState {

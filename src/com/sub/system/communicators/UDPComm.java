@@ -17,6 +17,11 @@ public class UDPComm {
             this.datagramChannel.bind(null);
     }
 
+    public void start() throws IOException {
+        datagramChannel = DatagramChannel.open();
+//        datagramChannel.bind(null);
+    }
+
     public void send(byte[] messageBytes, InetAddress address, int port) throws IOException {
         datagramChannel.send(ByteBuffer.wrap(messageBytes), new InetSocketAddress(address, port));
     }
@@ -28,5 +33,9 @@ public class UDPComm {
         byte[] messageBytes = Arrays.copyOf(buffer.array(), buffer.position());
 
         return new Envelope<>(messageBytes, sourceSocketAddress);
+    }
+
+    public void stop() throws IOException {
+        datagramChannel.close();
     }
 }

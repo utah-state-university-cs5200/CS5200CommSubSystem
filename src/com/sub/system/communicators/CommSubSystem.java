@@ -1,4 +1,5 @@
 package com.sub.system.communicators;
+import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class CommSubSystem {
@@ -11,13 +12,7 @@ public class CommSubSystem {
     public UDPComm UdpComm;
     public TCPComm TcpComm;
 
-    public ConversationDictionary getConvDict() {
-        return convDict;
-    }
 
-    public void setConvDict(ConversationDictionary convDict) {
-        this.convDict = convDict;
-    }
 
     public UDPComm getUdpComm() {
         return UdpComm;
@@ -58,12 +53,24 @@ public class CommSubSystem {
 
     }
 
-    public void Stop(int flag)
+    public void stop(int flag)
     {
         if (UdpComm != null)
         {
-//            UdpComm.Stop();
             UdpComm = null;
+        }
+    }
+    public void sending(int flag)
+    {
+        if (UdpComm != null)
+        {
+
+        }
+    }
+    public void receiving(int flag) throws IOException {
+        if (UdpComm != null)
+        {
+            UdpComm.receive();
         }
     }
 }

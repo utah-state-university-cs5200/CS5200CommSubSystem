@@ -50,16 +50,14 @@ public abstract class ConversationFactory {
     }
 
     public Conversation CreateFromConversationType() {
-
-        return null;
+        return new Conversation();
     }
-    public boolean canIncomingMessageStartConversation(String messageType)
-    {
+
+    public boolean canIncomingMessageStartConversation(String messageType) {
         return _typeMappings.containsKey(messageType);
     }
 
-    public  Conversation CreateFromEnvelope(Envelope envelope)
-    {
+    public  Conversation CreateFromEnvelope(Envelope envelope) {
         Conversation conversation = null;
         String messageType = (String) envelope.getMessage();
 
@@ -70,7 +68,7 @@ public abstract class ConversationFactory {
     }
 
     public Conversation CreateResponderConversation(String s, Envelope envelope){
-    return null;
+    return new Conversation();
     }
 
 
