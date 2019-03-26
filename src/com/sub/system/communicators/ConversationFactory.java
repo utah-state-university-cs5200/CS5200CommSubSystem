@@ -1,22 +1,18 @@
 package com.sub.system.communicators;
 
+import com.hw2.Message;
+
 import java.util.HashMap;
 
-public abstract class ConversationFactory {
+public class ConversationFactory {
     private HashMap<String, String> _typeMappings = new HashMap<>();
 
     public CommSubSystem ManagingSubsystem;
     public int DefaultMaxRetries;
     public int DefaultTimeout;
 
-    public abstract void Initialize();
+    public void Initialize() {
 
-    public HashMap<String, String> get_typeMappings() {
-        return _typeMappings;
-    }
-
-    public void set_typeMappings(HashMap<String, String> _typeMappings) {
-        this._typeMappings = _typeMappings;
     }
 
     public CommSubSystem getManagingSubsystem() {
@@ -50,7 +46,12 @@ public abstract class ConversationFactory {
     }
 
     public Conversation CreateFromConversationType() {
-        return new Conversation();
+        Conversation conv = new Conversation();
+        conv.setConvId("1");
+        conv.MaxRetries = 2;
+        conv.State = Conversation.PossibleState.Working;
+        conv.MaxRetries = 4;
+        return conv;
     }
 
     public boolean canIncomingMessageStartConversation(String messageType) {
@@ -59,7 +60,7 @@ public abstract class ConversationFactory {
 
     public  Conversation CreateFromEnvelope(Envelope envelope) {
         Conversation conversation = null;
-        String messageType = (String) envelope.getMessage();
+        Message messageType = envelope.getMessage();
 
         if (messageType != null && _typeMappings.containsKey(messageType))
             return CreateResponderConversation(_typeMappings.get(messageType), envelope);

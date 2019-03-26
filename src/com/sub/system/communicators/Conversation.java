@@ -1,13 +1,11 @@
 package com.sub.system.communicators;
 
+import java.net.InetSocketAddress;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.net.InetSocketAddress;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 public class Conversation {
-    Queue<Envelope> IncomingEnvelopes = new ConcurrentLinkedQueue<Envelope>();
-    // getter setter PossibleState
+    Queue<Envelope> IncomingEnvelopes = new ConcurrentLinkedQueue<Envelope>(); // Queue for Incoming Envelopes
+    // For maintaining the state of a conversation
     public enum PossibleState {
         NotInitialized,
         Working,
@@ -17,33 +15,22 @@ public class Conversation {
 
     public PossibleState State  = PossibleState.NotInitialized;
 
-    public CommSubSystem CommSubsystem; // getter setter
-    public InetSocketAddress inetSocketAddress; // getter setter
+    public CommSubSystem CommSubsystem;
+    public InetSocketAddress inetSocketAddress;
+
     public int Timeout = 3000;
     public int MaxRetries = 3;
-//    public MessageId ConvId;    // Why we needed to create MessageId Class
-    public String ConvId; // getter setter
     public String Error;
     public boolean Done;
 
-    public void Launch(Object context)
-    {
-        ExecutorService pool = Executors.newFixedThreadPool(3);
-    }
-
-//    public void Execute(Object context)
-//    {
-//        if (Initialize())
-//            ExecuteDetails(context);
-//    }
+    //    Conversation Id and Message Id, Need to resolve this
+    //    We can go with Uid for conversation and message
 
     protected boolean Initialize()
     {
         State = PossibleState.Working;
         return true;
     }
-
-//    protected abstract void ExecuteDetails(Object context);
 
     public void Process(Envelope env)
     {
@@ -56,5 +43,17 @@ public class Conversation {
             return false;
         else
             return true;
+    }
+
+    protected Envelope doReliableRequestReply(Envelope outgoingEnv) throws Exception
+    {
+        Envelope env = null;
+       CommSubsystem.UdpComm.send(outgoingEnv);
+        try {
+             env = CommSubsystem.UdpComm.receive();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return env;
     }
 }

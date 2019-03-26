@@ -1,15 +1,18 @@
 package com.sub.system.communicators;
 
+import com.hw2.Message;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.channels.DatagramChannel;
 import java.nio.ByteBuffer;
-import java.net.InetAddress;
+import java.nio.channels.DatagramChannel;
 import java.util.Arrays;
-public class UDPComm extends Envelope<byte[]>{
+
+public class UDPComm{
     private DatagramChannel datagramChannel;
 
     public UDPComm(DatagramChannel datagramChannel, InetSocketAddress address) throws IOException{
+        super();
         this.datagramChannel = datagramChannel;
         if (address.getPort() != 0)
             this.datagramChannel.bind(address);
@@ -22,18 +25,20 @@ public class UDPComm extends Envelope<byte[]>{
         datagramChannel.bind(null);
     }
 
-    public void send(byte[] messageBytes, InetAddress address, int port) throws IOException {
-        datagramChannel.send(ByteBuffer.wrap(messageBytes), new InetSocketAddress(address, port));
+    public void send(Envelope outgoingEnvelope) throws IOException {
+        int port = 8080;
+        byte [] messageBytes = outgoingEnvelope.getMessage().encode();
+        InetSocketAddress address = outgoingEnvelope.getInetSocketAddress();
+        datagramChannel.send(ByteBuffer.wrap(messageBytes), address);
     }
 
-    public Envelope<byte[]> receive() throws IOException {
+    public Envelope receive() throws IOException {
         ByteBuffer buffer = ByteBuffer.allocate(5096);
         buffer.clear();
         InetSocketAddress sourceSocketAddress = (InetSocketAddress) datagramChannel.receive(buffer);
 
         byte[] messageBytes = Arrays.copyOf(buffer.array(), buffer.position());
-
-        return new Envelope<>(messageBytes, sourceSocketAddress);
+        return new Envelope(Message.decode(messageBytes), sourceSocketAddress);
     }
 
     public void stop() throws IOException {

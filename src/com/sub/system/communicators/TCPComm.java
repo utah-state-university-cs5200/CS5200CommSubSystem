@@ -11,6 +11,7 @@ public class TCPComm extends Envelope<byte[]>{
     private Socket socket;
 
     TCPComm(Socket socket) {
+        super(messageBytes, sourceSocketAddress);
         if(socket == null || !socket.isConnected()) {
             throw new IllegalArgumentException();
         }

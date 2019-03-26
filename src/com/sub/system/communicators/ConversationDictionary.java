@@ -1,39 +1,25 @@
 package com.sub.system.communicators;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 
 public class ConversationDictionary {
-    ConversationDictionary convDict;
-    ConcurrentHashMap<String, Conversation> activeConversation =  new ConcurrentHashMap<String, Conversation>();
-    public ConversationDictionary getConvDict() {
-        return convDict;
-    }
+private static HashMap<Integer, DictionaryQueue> messageQueues = new HashMap<>();
 
-    public void setConvDict(ConversationDictionary convDict) {
-        this.convDict = convDict;
-    }
-
-    public void addConversation(Conversation conversation)
+    public static DictionaryQueue getQueue(int conversationId)
     {
-        if (conversation == null) return;
-
-        Conversation existingConversation = lookUpConversation(conversation.ConvId);
-        if (existingConversation == null)
-            activeConversation.put(conversation.ConvId, conversation);
+        if (messageQueues.containsKey(conversationId))
+            return messageQueues.get(conversationId);
+        else
+        {
+            DictionaryQueue messageQueue = new DictionaryQueue();
+            messageQueues.put(conversationId, messageQueue);
+            return messageQueue;
+        }
     }
 
-    public Conversation lookUpConversation(String convId){
-        Conversation conv = activeConversation.get(convId);
-        return conv;
-    }
-
-    public void remove(String convId)
+    public static boolean hasQueue(int conversationId)
     {
-        Conversation conversation;
-        activeConversation.remove(convId);
-    }
-
-    public void removeAll(){
-        activeConversation.clear();
+        return messageQueues.containsKey(conversationId);
     }
 }
+
