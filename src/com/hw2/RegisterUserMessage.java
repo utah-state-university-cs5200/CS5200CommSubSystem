@@ -1,7 +1,7 @@
 package com.hw2;
 
 import java.io.IOException;
-
+import java.util.UUID;
 public  class RegisterUserMessage extends Message {
     private short userId;
     private String Name;
@@ -9,8 +9,8 @@ public  class RegisterUserMessage extends Message {
     private String password;
     private String areaOfInterest;
 
-    public RegisterUserMessage(short userId, String Name, String emailId, String password, String areaOfInterest) {
-        super(MessageType.RegisterUser);
+    public RegisterUserMessage(UUID uuid, short userId, String Name, String emailId, String password, String areaOfInterest) {
+        super(MessageType.RegisterUser, uuid);
         this.userId = userId;
         this.Name = Name;
         this.emailId = emailId;
@@ -25,14 +25,14 @@ public  class RegisterUserMessage extends Message {
         if (decoder.decodeMessageType() != MessageType.RegisterUser) {
             throw new IllegalArgumentException();
         }
-
+        UUID uuid = decoder.decodeUUID();
         short userId = decoder.decodeShort();
         String Name = decoder.decodeString();
         String emailId = decoder.decodeString();
         String password = decoder.decodeString();
         String areaOfInterest = decoder.decodeString();
 
-        return new RegisterUserMessage(userId, Name, emailId, password, areaOfInterest);
+        return new RegisterUserMessage(uuid, userId, Name, emailId, password, areaOfInterest);
     }
 
     public short getUserId() {
@@ -79,6 +79,7 @@ public  class RegisterUserMessage extends Message {
     public byte[] encode() throws IOException {
         return new Encoder()
                 .encodeMessageType(messageType)
+                .encodeUUID(convId)
                 .encodeShort(userId)
                 .encodeString(Name)
                 .encodeString(emailId)

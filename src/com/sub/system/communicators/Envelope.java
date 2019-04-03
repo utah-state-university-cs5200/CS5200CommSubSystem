@@ -1,14 +1,15 @@
 package com.sub.system.communicators;
 
 import com.hw2.Message;
-
+import java.util.*;
 import java.net.InetSocketAddress;
 import java.util.Objects;
 
 public class Envelope<T> {
-    private Message message;
-    private InetSocketAddress inetSocketAddress;
-
+    Message message;
+    InetSocketAddress inetSocketAddress;
+    Set<UUID> existingConvs = new HashSet<>();
+    HashMap msgTypeAndConvMap = new HashMap<>(); // This map has all the conversations of a message protocol where key is a protocol type and value is all the conversations of a message protocol
     Envelope(Message message, InetSocketAddress inetSocketAddress) {
         this.message = message;
         this.inetSocketAddress = inetSocketAddress;

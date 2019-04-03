@@ -8,7 +8,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 import java.util.Arrays;
 
-public class UDPComm{
+public class UDPComm implements Runnable{
     private DatagramChannel datagramChannel;
 
     public UDPComm(DatagramChannel datagramChannel, InetSocketAddress address) throws IOException{
@@ -55,5 +55,10 @@ public class UDPComm{
         datagramChannel.connect(new InetSocketAddress("test", 80));
         int bytesRead = datagramChannel.read(buf);
         int bytesWritten = datagramChannel.write(buf);
+    }
+
+    @Override
+    public void run() {
+
     }
 }

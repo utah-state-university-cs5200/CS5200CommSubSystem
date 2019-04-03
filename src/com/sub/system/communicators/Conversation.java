@@ -32,7 +32,7 @@ public class Conversation {
         return true;
     }
 
-    public void Process(Envelope env)
+    public void process(Envelope env)
     {
         if (env.getMessage() == null || env.getSrcInetSocketAddress() == null) return;
         IncomingEnvelopes.add(env);
