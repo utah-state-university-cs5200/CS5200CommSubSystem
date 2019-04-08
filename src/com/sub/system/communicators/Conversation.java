@@ -2,9 +2,11 @@ package com.sub.system.communicators;
 
 import java.net.InetSocketAddress;
 import java.util.Queue;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
 public class Conversation {
     Queue<Envelope> IncomingEnvelopes = new ConcurrentLinkedQueue<Envelope>(); // Queue for Incoming Envelopes
+    UUID ConvId;
     // For maintaining the state of a conversation
     public enum PossibleState {
         NotInitialized,
@@ -17,14 +19,90 @@ public class Conversation {
 
     public CommSubSystem CommSubsystem;
     public InetSocketAddress inetSocketAddress;
-
     public int Timeout = 3000;
     public int MaxRetries = 3;
     public String Error;
     public boolean Done;
 
-    //    Conversation Id and Message Id, Need to resolve this
-    //    We can go with Uid for conversation and message
+    public Queue<Envelope> getIncomingEnvelopes() {
+        return IncomingEnvelopes;
+    }
+
+    public PossibleState getState() {
+        return State;
+    }
+
+    public void setState(PossibleState state) {
+        State = state;
+    }
+
+    public CommSubSystem getCommSubsystem() {
+        return CommSubsystem;
+    }
+
+    public void setCommSubsystem(CommSubSystem commSubsystem) {
+        CommSubsystem = commSubsystem;
+    }
+
+    public InetSocketAddress getInetSocketAddress() {
+        return inetSocketAddress;
+    }
+
+    public void setInetSocketAddress(InetSocketAddress inetSocketAddress) {
+        this.inetSocketAddress = inetSocketAddress;
+    }
+
+    public int getTimeout() {
+        return Timeout;
+    }
+
+    public void setTimeout(int timeout) {
+        Timeout = timeout;
+    }
+
+    public int getMaxRetries() {
+        return MaxRetries;
+    }
+
+    public void setMaxRetries(int maxRetries) {
+        MaxRetries = maxRetries;
+    }
+
+    public String getError() {
+        return Error;
+    }
+
+    public void setError(String error) {
+        Error = error;
+    }
+
+    public boolean isDone() {
+        return Done;
+    }
+
+    public void setDone(boolean done) {
+        Done = done;
+    }
+
+    public void setIncomingEnvelopes(Queue<Envelope> incomingEnvelopes) {
+
+        IncomingEnvelopes = incomingEnvelopes;
+    }
+
+    public UUID getConvId() {
+        return ConvId;
+    }
+
+    public void setConvId(UUID convId) {
+        ConvId = convId;
+    }
+
+    // creating UUID
+    public synchronized UUID getUUID(){
+
+        ConvId = UUID.randomUUID();
+        return ConvId;
+    }
 
     protected boolean Initialize()
     {
@@ -47,13 +125,19 @@ public class Conversation {
 
     protected Envelope doReliableRequestReply(Envelope outgoingEnv) throws Exception
     {
-        Envelope env = null;
-       CommSubsystem.UdpComm.send(outgoingEnv);
+        Envelope incomingEnvelope = null;
+        int remainingSends = MaxRetries;
+        while (remainingSends > 0 && incomingEnvelope == null)
+        {
+            remainingSends--;
+            if (CommSubsystem.UdpComm.send(outgoingEnv)){
         try {
-             env = CommSubsystem.UdpComm.receive();
+            incomingEnvelope = CommSubsystem.UdpComm.receive();
         } catch (Exception e) {
             e.printStackTrace();
+        }}
         }
-        return env;
+
+        return incomingEnvelope;
     }
 }

@@ -1,25 +1,30 @@
 package com.sub.system.communicators;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class ConversationDictionary {
-private static HashMap<Integer, DictionaryQueue> messageQueues = new HashMap<>();
-
-    public static DictionaryQueue getQueue(int conversationId)
+private static HashMap<UUID, Conversation> _activeConversation = new HashMap();
+    public static Conversation getConversation(UUID conversationId)
     {
-        if (messageQueues.containsKey(conversationId))
-            return messageQueues.get(conversationId);
-        else
-        {
-            DictionaryQueue messageQueue = new DictionaryQueue();
-            messageQueues.put(conversationId, messageQueue);
-            return messageQueue;
-        }
+        Conversation conv;
+        conv = _activeConversation.get(conversationId);
+        return conv;
     }
-
-    public static boolean hasQueue(int conversationId)
+    public static void delConversation(UUID conversationId)
     {
-        return messageQueues.containsKey(conversationId);
+        _activeConversation.remove(conversationId);
+    }
+    public static void addConversation(UUID conversationId, Conversation conv)
+    {
+        if (conv == null) return;
+        Conversation existingConversation = getConversation(conversationId);
+        if (existingConversation == null)
+            _activeConversation.put(conversationId, conv);
+    }
+    public static void clearAllConversation(UUID conversationId)
+    {
+        _activeConversation.clear();
     }
 }
 

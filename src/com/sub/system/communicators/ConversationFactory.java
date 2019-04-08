@@ -3,9 +3,10 @@ package com.sub.system.communicators;
 import com.hw2.Message;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class ConversationFactory {
-    private HashMap<String, String> _typeMappings = new HashMap<>();
+    private HashMap<Message.MessageType, UUID> _typeMappings = new HashMap<>();
 
     public CommSubSystem ManagingSubsystem;
     public int DefaultMaxRetries;
@@ -39,15 +40,15 @@ public class ConversationFactory {
         DefaultTimeout = defaultTimeout;
     }
 
-    protected void Add(String messageType, String conversationType)
+    protected void Add(Message.MessageType msgType, UUID convId)
     {
-        if (!_typeMappings.containsKey(messageType))
-            _typeMappings.put(messageType, conversationType);
+        if (!_typeMappings.containsKey(msgType))
+            _typeMappings.put(msgType, convId);
     }
 
     public Conversation CreateFromConversationType() {
         Conversation conv = new Conversation();
-        conv.setConvId("1");
+        conv.ConvId = conv.getConvId();
         conv.MaxRetries = 2;
         conv.State = Conversation.PossibleState.Working;
         conv.MaxRetries = 4;
@@ -60,12 +61,7 @@ public class ConversationFactory {
 
     public  Conversation CreateFromEnvelope(Envelope envelope) {
         Conversation conversation = null;
-        Message messageType = envelope.getMessage();
-
-        if (messageType != null && _typeMappings.containsKey(messageType))
-            return CreateResponderConversation(_typeMappings.get(messageType), envelope);
-        else
-            return null;
+        return conversation;
     }
 
     public Conversation CreateResponderConversation(String s, Envelope envelope){

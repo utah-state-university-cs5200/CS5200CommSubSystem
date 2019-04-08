@@ -1,27 +1,27 @@
 package com.sub.system.communicators;
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.util.HashMap;
 
 public class CommSubSystem {
-    private InetSocketAddress bestAddress;
+//    private InetSocketAddress bestAddress;
     private ConversationFactory convFact;
-    private Conversation conv;
-    private Dispatcher disp;
-    private Envelope env;
     private ConversationDictionary convDict;
     public UDPComm UdpComm;
-    public TCPComm TcpComm;
     private int _minPort;
     private int _maxPort;
 
     private static HashMap<Integer, Boolean> usedPort = new HashMap<Integer, Boolean>();
     private static int currentPort = 8080;
 
+    public ConversationDictionary getConvDict() {
+        return convDict;
+    }
+
     public static int nextAvailablePort()
     {
         while (usedPort.containsKey(currentPort))
             currentPort++;
+
 
         usedPort.put(currentPort, true);
 
@@ -40,14 +40,6 @@ public class CommSubSystem {
 
     public void setUdpComm(UDPComm udpComm) {
         UdpComm = udpComm;
-    }
-
-    public TCPComm getTcpComm() {
-        return TcpComm;
-    }
-
-    public void setTcpComm(TCPComm tcpComm) {
-        TcpComm = tcpComm;
     }
 
 
@@ -79,19 +71,6 @@ public class CommSubSystem {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }
-    public void sending(int flag)
-    {
-        if (UdpComm != null)
-        {
-
-        }
-    }
-    public void receiving(int flag) throws IOException {
-        if (UdpComm != null)
-        {
-            UdpComm.receive();
         }
     }
 }
