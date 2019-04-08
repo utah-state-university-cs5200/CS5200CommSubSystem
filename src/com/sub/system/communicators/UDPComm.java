@@ -14,7 +14,7 @@ public class UDPComm implements Runnable{
     private DatagramChannel datagramChannel;
 
     // TODO: define a queue
-    Queue<Envelope> envelopeQueue = new ConcurrentLinkedQueue<>();
+    Queue<Envelope> receiveEnvelopeQueue = new ConcurrentLinkedQueue<>();
     public UDPComm(DatagramChannel datagramChannel, InetSocketAddress address) throws IOException{
         super();
         this.datagramChannel = datagramChannel;
@@ -48,48 +48,20 @@ public class UDPComm implements Runnable{
         datagramChannel.close();
     }
 
-    // TODO: do this in a conversation not the UDP communicator
-//    public <T extends Message> void sendReliably(Envelope messageToSend, InetAddress address, int port,
-//                                                 Class<T> expectedResponse, int maxRetries, long millisecondsBetweenRetries) throws IOException {
-//
-//        final boolean receivedRes = false;
-//
-//                Message.MessageType msgType = messageToSend.getMessage().getMessageType();
-//                UUID ConvId = messageToSend.getMessage().getConversationId();
-//
-//
-////        addToDispatcher(expectedResponse, );
-//
-//        while(true && maxRetries > 0) {
-//            send(messageToSend, address, port);
-//
-//            try {
-//                Thread.sleep(millisecondsBetweenRetries);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//
-//            maxRetries--;
-//        }
-//
-//
-//
-//        if(!receivedRes) {
-//            throw new IOException("Failed to send reliably.");
-//        }
-//    }
     @Override
     public void run() {
         try {
             Envelope e = receive();
             // TODO: put into a queue
-            envelopeQueue.add(e);
+            receiveEnvelopeQueue.add(e);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void getEnvelope(int timeout) {
+    public Envelope getEnvelope() {
         // return message from queue with timeout
+        Envelope env = null;
+        return env;
     }
 }

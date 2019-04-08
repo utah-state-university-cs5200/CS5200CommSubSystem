@@ -7,7 +7,7 @@ public class ConversationDictionary {
 private static HashMap<UUID, Conversation> _activeConversation = new HashMap();
     public static Conversation getConversation(UUID conversationId)
     {
-        Conversation conv;
+        Conversation conv = null;
         conv = _activeConversation.get(conversationId);
         return conv;
     }

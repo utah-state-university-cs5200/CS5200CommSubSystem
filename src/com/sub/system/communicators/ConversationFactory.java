@@ -6,12 +6,11 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class ConversationFactory {
-    private HashMap<Message.MessageType, UUID> _typeMappings = new HashMap<>();
+    private HashMap<Message.MessageType, UUID> _typeMappings = new HashMap<>(); // Doubt
 
     public CommSubSystem ManagingSubsystem;
     public int DefaultMaxRetries;
     public int DefaultTimeout;
-
     public void Initialize() {
 
     }
@@ -52,6 +51,7 @@ public class ConversationFactory {
         conv.MaxRetries = 2;
         conv.State = Conversation.PossibleState.Working;
         conv.MaxRetries = 4;
+        ConversationDictionary.addConversation(conv.ConvId,conv);
         return conv;
     }
 
@@ -61,6 +61,10 @@ public class ConversationFactory {
 
     public  Conversation CreateFromEnvelope(Envelope envelope) {
         Conversation conversation = null;
+        Message.MessageType messageType = envelope.getMessage().getMessageType();
+//        if (messageType != null && _typeMappings.get(messageType))
+//            conversation = CreateResponderConversation(_typeMappings[messageType], envelope);
+
         return conversation;
     }
 

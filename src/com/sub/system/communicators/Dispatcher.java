@@ -1,16 +1,28 @@
 package com.sub.system.communicators;
 
 public class Dispatcher implements Runnable {
+    UDPComm udpComm;
+    ConversationFactory cf;
+    private boolean doStop = false;
+
+    public synchronized void doStop() {
+        this.doStop = true;
+    }
+
+    private synchronized boolean keepRunning() {
+        return this.doStop == false;
+    }
     public void run() {
-
-        // Loop until stopped
-            // Try to getEnvelope from UDPCommeuncator with without
-            // If got a envelope
-                // lookup conversation in the Conversation Dictionary using the conversation id in the message
-                // If conversation exists
-                    // converstation.Process(envelope)
-                // else
-                    // create conversation using the conversation factory
-
+        while (keepRunning()) {
+            Envelope env = udpComm.getEnvelope();
+            if(env!=null){
+                Conversation c = ConversationDictionary.getConversation(env.getMessage().getConversationId());
+                if(c!=null){
+                    c.process(env);
+                }else{
+                    cf.CreateFromEnvelope(env);
+                }
+            }
+        }
     }
 }
